@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>All games</title>
+ <link rel="shortcut icon"
+        href="https://cdn.discordapp.com/attachments/847108198439059456/848210310031867964/17-removebg-preview.png">
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>A&J Games</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+button.like {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: #009688;
+  background-color: rgba(38, 166, 154, 0.3);
+  border-color: #009688;
+  border-width: 1px;
+  font-size: 15px;
+}
+
+button.dislike {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  line-heigth: 50px;
+  border-radius: 50%;
+  color: #ff5252;
+  background-color: rgba(255, 138, 128, 0.3);
+  border-color: #ff5252;
+  border-width: 1px;
+  font-size: 15px;
+}
+
+button.learnmore {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #0097a7;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+    <div id="games" class="our">
+
+<div class="container" id="con"><div class="col-md-12 margin_bottom">
+                    <div class="row">
+
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                            <div class="two-box">
+                                <figure><img
+                                        src="https://cdn-products.eneba.com/resized-products/f-o6PUemtLDk7aXjY-yskyCl2RfVCdp-bZxuUdH5hsc_350x200_1x-0.jpeg"
+                                        style="width:21rem;height:30rem;" /></figure>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+
+                            <div class="Games">
+                                <h3>Dirt 3</h3>
+                                <p>Dirt 3 is a popular rally racing game for Xbox 360 that combines the feel of
+                                    fast-paced arcade style racing action across multiple surfaces and environments with
+                                    realistic features found on real off-road circuits.</p>
+                                <a href="https://www.wifi4games.com/pc_games/Dirt_3.html"> Dawnload Game</button> </a>
+
+<br>
+<br>
+<button class="like" style="cursor:pointer;width:5rem;height:5rem;" id="b1">
+	<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+</button><span style="font-size:2rem;margin-left:2rem;" id="k1">likes</span>
+<br><br>
+<button class="dislike" style="cursor:pointer;width:5rem;height:5rem;" id="b2">
+	<i class="fa fa-thumbs-o-down" aria-hidden="true" ></i>
+</button><span style="font-size:2rem;margin-left:2rem;" id="k2">likes</span>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+ <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<script>
+
+function games(){
+	    var check_res;
+	    var query = new Object();
+	    $.ajax({ 
+	        async:false,
+	        url:"/admin/allgames",
+	        data:query,
+	        type: "POST",
+	        success: function(result){
+	        	check_res=result;
+	        },error:function(){
+}
+	    });
+	    return check_res;    
+	}
+	const result = games();
+	const contain = document.getElementById('con');
+	for(let i=0; i < result.length; i++){
+		const div = document.createElement("div");
+		div.classList.add('col-md-12' , 'margin_bottom');
+		div.innerHTML = `<div class="row">
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                <div class="two-box">
+                    <figure><img
+                            src="${result[i].picture}"
+                            style="width:21rem;height:30rem;" /></figure>
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+
+                <div class="Games">
+                    <h3>${result[i].name}</h3>
+                    <p>${result[i].description}</p>
+                    <a href="${result[i].download}"> Dawnload Game</button> </a>
+
+<br>
+<br>
+<button class="like" style="cursor:pointer;width:5rem;height:5rem;" id="b1">
+<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+</button><span style="font-size:2rem;margin-left:2rem;" id="k1">likes</span>
+<br><br>
+<button class="dislike" style="cursor:pointer;width:5rem;height:5rem;" id="b2">
+<i class="fa fa-thumbs-o-down" aria-hidden="true" ></i>
+</button><span style="font-size:2rem;margin-left:2rem;" id="k2">likes</span>
+                   
+                </div>
+            </div>
+        </div>`;
+		contain.prepend(div);
+	}
+	
+</script>
+</body>
+</html>
